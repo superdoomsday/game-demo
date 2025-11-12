@@ -12,6 +12,7 @@ public class GameController implements InputEventListener {
         viewGuiController.setEventListener(this);
         viewGuiController.initGameView(board.getBoardMatrix(), board.getViewData());
         viewGuiController.bindScore(board.getScore().scoreProperty());
+        viewGuiController.bindLevel(board.getLevel().levelProperty());
     }
 
     @Override
@@ -29,7 +30,8 @@ public class GameController implements InputEventListener {
             }
 
             viewGuiController.refreshGameBackground(board.getBoardMatrix());
-
+            // update the game level
+            viewGuiController.updateLevel(board);
         } else {
             if (event.getEventSource() == EventSource.USER) {
                 board.getScore().add(1);

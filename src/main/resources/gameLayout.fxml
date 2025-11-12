@@ -18,7 +18,7 @@
             <VBox spacing="15" style="-fx-padding: 20; -fx-background-color: rgba(0,0,0,0.7);">
                 <VBox alignment="CENTER_LEFT" spacing="5">
                     <Label text="score" style="-fx-text-fill: white; -fx-font-size: 16;"/>
-                    <Label fx:id="scoreLabel" text="0" style="-fx-text-fill: #00FF00; -fx-font-size: 28; -fx-font-weight: bold;"/>
+                    <Label fx:id="scoreLabel" text="0" style="-fx-text-fill: #00FF00; -fx-font-size: 20; -fx-font-weight: bold;"/>
                 </VBox>
                 <VBox alignment="CENTER_LEFT" spacing="5">
                     <Label text="level" style="-fx-text-fill: white; -fx-font-size: 16;"/>

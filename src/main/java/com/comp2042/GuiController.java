@@ -5,6 +5,7 @@ import javafx.animation.Timeline;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -33,6 +34,9 @@ public class GuiController implements Initializable {
 
     @FXML
     private Label scoreLabel;
+
+    @FXML
+    private Label levelLabel;
 
     @FXML
     private Group groupNotification;
@@ -207,12 +211,46 @@ public class GuiController implements Initializable {
         gamePanel.requestFocus();
     }
 
+    public void updateLevel(Board simpleBoard) {
+        int newLevel = calculateLevel(simpleBoard.getScore().scoreProperty().getValue());
+        if (newLevel != simpleBoard.getLevel().levelProperty().getValue()) {
+            simpleBoard.getLevel().levelProperty().set(newLevel);
+            updateGameSpeed(newLevel);
+        }
+    }
+
+    private int calculateLevel(int score) {
+        return Math.max(1, score / 200 + 1);
+    }
+
+    private void updateGameSpeed(int level) {
+        double speed = Math.max(50, 400 - (level - 1) * 50);
+        timeLine.stop();
+        timeLine = new Timeline(new KeyFrame(
+                Duration.millis(speed),
+                ae -> moveDown(new MoveEvent(EventType.DOWN, EventSource.THREAD))
+        ));
+        timeLine.setCycleCount(Timeline.INDEFINITE);
+
+        if (!isPause.getValue() && !isGameOver.getValue()) {
+            timeLine.play();
+        }
+    }
+
     public void setEventListener(InputEventListener eventListener) {
         this.eventListener = eventListener;
     }
 
     public void bindScore(IntegerProperty integerProperty) {
         scoreLabel.textProperty().bind(integerProperty.asString());
+    }
+
+    /**
+     * bind level to the label
+     * @param levelProperty level property
+     */
+    public void bindLevel(IntegerProperty levelProperty) {
+        levelLabel.textProperty().bind(levelProperty.asString());
     }
 
     public void gameOver() {
