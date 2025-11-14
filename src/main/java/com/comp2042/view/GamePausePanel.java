@@ -10,7 +10,7 @@ public class GamePausePanel extends BorderPane {
 
     public GamePausePanel() {
         final Label gamePauseLabel = new Label("GAME PAUSE");
-        gamePauseLabel.getStyleClass().add("gameOverStyle");
+        gamePauseLabel.getStyleClass().add("gamePauseStyle");
         setCenter(gamePauseLabel);
     }
 }
