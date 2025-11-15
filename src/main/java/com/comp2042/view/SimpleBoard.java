@@ -16,6 +16,7 @@ public class SimpleBoard implements Board {
     private int[][] currentGameMatrix;
     private Point currentOffset;
     private final Score score;
+    // add level variable
     private final Level level;
 
     public SimpleBoard(int width, int height) {
@@ -88,6 +89,7 @@ public class SimpleBoard implements Board {
     public boolean createNewBrick() {
         Brick currentBrick = brickGenerator.getBrick();
         brickRotator.setBrick(currentBrick);
+        // adjust the height position of each newly generated block
         currentOffset = new Point(4, 5);
         return MatrixOperations.intersect(currentGameMatrix, brickRotator.getCurrentShape(), (int) currentOffset.getX(), (int) currentOffset.getY());
     }
@@ -120,6 +122,11 @@ public class SimpleBoard implements Board {
         return score;
     }
 
+    /**
+     * method to return the level value
+     *
+     * @return the level value
+     */
     @Override
     public Level getLevel() {
         return level;

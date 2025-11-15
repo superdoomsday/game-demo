@@ -37,9 +37,11 @@ public class GuiController implements Initializable {
     @FXML
     private GridPane gamePanel;
 
+    // add the label to show the score
     @FXML
     private Label scoreLabel;
 
+    // the label to show the level
     @FXML
     private Label levelLabel;
 
@@ -52,6 +54,9 @@ public class GuiController implements Initializable {
     @FXML
     private GameOverPanel gameOverPanel;
 
+    /**
+     * add the panel to show the pause info
+     */
     @FXML
     private GamePausePanel gamePausePanel;
 
@@ -102,6 +107,7 @@ public class GuiController implements Initializable {
             }
         });
         gameOverPanel.setVisible(false);
+        // when gama begin, gamePausePanel is inVisible
         gamePausePanel.setVisible(false);
 
         final Reflection reflection = new Reflection();
@@ -216,27 +222,48 @@ public class GuiController implements Initializable {
         gamePanel.requestFocus();
     }
 
+    /**
+     * the method to update the level value
+     *
+     * @param simpleBoard the simpleBoard
+     */
     public void updateLevel(Board simpleBoard) {
+        // calculate tem level value
         int newLevel = calculateLevel(simpleBoard.getScore().scoreProperty().getValue());
         if (newLevel != simpleBoard.getLevel().levelProperty().getValue()) {
+            // change the label to show the newest level value
             simpleBoard.getLevel().levelProperty().set(newLevel);
+            // update the brick down speed by the level value
             updateGameSpeed(newLevel);
         }
     }
 
+    /**
+     * the method to calculate game value
+     *
+     * @param score tem score value
+     * @return the level value
+     */
     private int calculateLevel(int score) {
         return Math.max(1, score / 200 + 1);
     }
 
+    /**
+     * update the game speed by the level value
+     *
+     * @param level the level value
+     */
     private void updateGameSpeed(int level) {
+        // value + 1, then the speed decrease 50ms
         double speed = Math.max(50, 400 - (level - 1) * 50);
+        // restart the timeLine
         timeLine.stop();
         timeLine = new Timeline(new KeyFrame(
                 Duration.millis(speed),
                 ae -> moveDown(new MoveEvent(EventType.DOWN, EventSource.THREAD))
         ));
         timeLine.setCycleCount(Timeline.INDEFINITE);
-
+        // start the new timeLine
         if (!isPause.getValue() && !isGameOver.getValue()) {
             timeLine.play();
         }
@@ -246,6 +273,11 @@ public class GuiController implements Initializable {
         this.eventListener = eventListener;
     }
 
+    /**
+     * bind the value to the scoreLabel
+     *
+     * @param integerProperty tem score value
+     */
     public void bindScore(IntegerProperty integerProperty) {
         scoreLabel.textProperty().bind(integerProperty.asString());
     }
@@ -267,6 +299,7 @@ public class GuiController implements Initializable {
     public void newGame(ActionEvent actionEvent) {
         timeLine.stop();
         gameOverPanel.setVisible(false);
+        // when gama begin, gamePausePanel is inVisible
         gamePausePanel.setVisible(false);
         eventListener.createNewGame();
         gamePanel.requestFocus();
@@ -285,9 +318,11 @@ public class GuiController implements Initializable {
             isPause.setValue(!isPause.getValue());
             if (isPause.getValue()) {
                 timeLine.pause();
+                // if isPause,gamePausePanel can be shown
                 gamePausePanel.setVisible(true);
             } else {
                 timeLine.play();
+                // if not isPause,gamePausePanel can not be shown
                 gamePausePanel.setVisible(false);
             }
         }

@@ -13,12 +13,4 @@ public final class Level {
     public IntegerProperty levelProperty() {
         return level;
     }
-
-    public void add(int i){
-        level.setValue(level.getValue() + i);
-    }
-
-    public void reset() {
-        level.setValue(0);
-    }
 }
