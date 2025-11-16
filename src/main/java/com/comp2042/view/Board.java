@@ -27,6 +27,10 @@ public interface Board {
 
     Score getScore();
 
+    /**
+     * add the method to return the level value
+     * @return the level value
+     */
     Level getLevel();
 
     void newGame();

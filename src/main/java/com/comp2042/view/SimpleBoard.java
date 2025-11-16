@@ -26,6 +26,7 @@ public class SimpleBoard implements Board {
         brickGenerator = new RandomBrickGenerator();
         brickRotator = new BrickRotator();
         score = new Score();
+        // initial the level
         level = new Level();
     }
 
