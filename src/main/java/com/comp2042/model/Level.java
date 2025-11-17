@@ -13,4 +13,11 @@ public final class Level {
     public IntegerProperty levelProperty() {
         return level;
     }
+
+    /**
+     * reset the level value to 1
+     */
+    public void reset() {
+        level.setValue(1);
+    }
 }

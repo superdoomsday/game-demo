@@ -6,6 +6,7 @@ GitHub repository: https://github.com/superdoomsday/game-demo
 (2) Import project code in IntelliJ IDEA  
 (3) Use Maven to pull the relevant dependencies used in the project  
 (4) In the plugin list of Maven, use JavaFX to package and run the project code
+
 ## Implemented and Working Properly: List the features that have been successfully
 (1) Adjust the height position at which blocks appear in the game  
 (2) Add a new game pause status display panel and add a listening event for the computer key 'p' to allow for pausing and resuming the game  
@@ -46,6 +47,13 @@ public final class Level {
     public IntegerProperty levelProperty() {
         return level;
     }
+
+    /**
+     * reset the level value to 1
+     */
+    public void reset() {
+        level.setValue(1);
+    }
 }
 ```
 
@@ -65,6 +73,13 @@ level = new Level();
 public Level getLevel() {  
 	return level;  
 }  
+@Override
+public void newGame() {
+	...
+	// reset the level value to one
+    level.reset();
+    ...
+}
 ```
 
 ### (2) GuiController.java  

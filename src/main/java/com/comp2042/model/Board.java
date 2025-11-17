@@ -1,4 +1,4 @@
-package com.comp2042.view;
+package com.comp2042.model;
 
 import com.comp2042.model.ClearRow;
 import com.comp2042.model.Level;

@@ -1,9 +1,8 @@
-package com.comp2042.view;
+package com.comp2042.model;
 
 import com.comp2042.logic.bricks.Brick;
 import com.comp2042.logic.bricks.BrickGenerator;
 import com.comp2042.logic.bricks.RandomBrickGenerator;
-import com.comp2042.model.*;
 
 import java.awt.*;
 
@@ -138,6 +137,8 @@ public class SimpleBoard implements Board {
     public void newGame() {
         currentGameMatrix = new int[width][height];
         score.reset();
+        // reset the level value to zero
+        level.reset();
         createNewBrick();
     }
 }
