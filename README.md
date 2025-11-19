@@ -14,6 +14,9 @@ GitHub repository: https://github.com/superdoomsday/game-demo
 (4) Add a game level management feature, where players earn 1 point for every 200 points they gain in game level, and the time interval between block drops will be reduced by 50 milliseconds  
 (5) Refactor the project directory, add packages such as model, view, and controller, and refactor the package paths of all classes in the project based on the MVC pattern  
 (6) Add comments to the newly added and modified code
+
+(7) Add some test cases
+
 ## New Java Classes
 (1) GamePausePanel.java: the panel to show pause status, like GameOverPanel in the project  
 
@@ -57,7 +60,60 @@ public final class Level {
 }
 ```
 
+(3) LevelTest.java: junit tests for level class 
+
+```
+/**
+ * junit tests for level class
+ */
+class LevelTest {
+
+    /**
+     * test method levelProperty() in class Level
+     */
+    @Test
+    void levelProperty() {
+        Level level = new Level();
+        level.levelProperty().set(3);
+        assertEquals(3, level.levelProperty().getValue());
+    }
+
+    /**
+     * test method reset() in class Level
+     */
+    @Test
+    void reset() {
+        Level level = new Level();
+        level.levelProperty().set(3);
+        assertEquals(3, level.levelProperty().getValue());
+        level.reset();
+        assertEquals(1, level.levelProperty().getValue());
+    }
+}
+```
+
+(4) GuiControllerTest.java: junit tests for class GuiController
+
+```
+/**
+ * junit tests for class GuiController
+ */
+class GuiControllerTest {
+
+    /**
+     * test calculateLevel() method in class GuiController
+     */
+    @Test
+    void calculateLevel() {
+        GuiController guiController = new GuiController();
+        int temLevel = guiController.calculateLevel(300);
+        assertEquals(2, temLevel);
+        temLevel = guiController.calculateLevel(400);
+        assertEquals(3, temLevel);
+```
+
 ## Modified Java Classes
+
 ### (1) SimpleBoard.java  
 changes:  
 currentOffset = new Point(4, 10); 

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * test for class GuiController
+ * junit tests for class GuiController
  */
 class GuiControllerTest {
 
