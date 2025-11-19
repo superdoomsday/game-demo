@@ -244,7 +244,7 @@ public class GuiController implements Initializable {
      * @param score tem score value
      * @return the level value
      */
-    private int calculateLevel(int score) {
+    public int calculateLevel(int score) {
         return Math.max(1, score / 200 + 1);
     }
 

@@ -137,7 +137,7 @@ public class SimpleBoard implements Board {
     public void newGame() {
         currentGameMatrix = new int[width][height];
         score.reset();
-        // reset the level value to zero
+        // reset the level value to one
         level.reset();
         createNewBrick();
     }
