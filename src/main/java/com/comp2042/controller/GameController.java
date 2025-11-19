@@ -31,6 +31,7 @@ public class GameController implements InputEventListener {
 
     /**
      * when the user clicks the "Start" button
+     * This method is called when the user clicks the "Start" button
      */
     @Override
     public DownData onDownEvent(MoveEvent event) {
