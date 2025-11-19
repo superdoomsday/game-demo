@@ -14,6 +14,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+/**
+ * displays a notification message on the screen.
+ */
 public class NotificationPanel extends BorderPane {
 
     public NotificationPanel(String text) {

@@ -30,6 +30,10 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * the controller of the game view. 
+ * handles the user input and the game logic.
+ */
 public class GuiController implements Initializable {
 
     private static final int BRICK_SIZE = 20;
@@ -116,6 +120,9 @@ public class GuiController implements Initializable {
         reflection.setTopOffset(-12);
     }
 
+    /**
+     * the method to initialize the game view
+     */
     public void initGameView(int[][] boardMatrix, ViewData brick) {
         displayMatrix = new Rectangle[boardMatrix.length][boardMatrix[0].length];
         for (int i = 2; i < boardMatrix.length; i++) {
@@ -195,6 +202,9 @@ public class GuiController implements Initializable {
         }
     }
 
+    /**
+     * the method to refresh the game background
+     */
     public void refreshGameBackground(int[][] board) {
         for (int i = 2; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
@@ -290,12 +300,18 @@ public class GuiController implements Initializable {
         levelLabel.textProperty().bind(levelProperty.asString());
     }
 
+    /**
+     * show the game over panel
+     */
     public void gameOver() {
         timeLine.stop();
         gameOverPanel.setVisible(true);
         isGameOver.setValue(Boolean.TRUE);
     }
 
+    /**
+     * start new game
+     */
     public void newGame(ActionEvent actionEvent) {
         timeLine.stop();
         gameOverPanel.setVisible(false);

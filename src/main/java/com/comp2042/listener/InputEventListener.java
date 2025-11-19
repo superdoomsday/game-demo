@@ -4,6 +4,9 @@ import com.comp2042.model.DownData;
 import com.comp2042.model.MoveEvent;
 import com.comp2042.model.ViewData;
 
+/**
+ * Interface for input event listeners
+ */
 public interface InputEventListener {
 
     DownData onDownEvent(MoveEvent event);

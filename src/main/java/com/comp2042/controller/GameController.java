@@ -5,12 +5,20 @@ import com.comp2042.model.*;
 import com.comp2042.model.Board;
 import com.comp2042.model.SimpleBoard;
 
+/**
+ * this is the controller of the game. 
+ * It handles the input events 
+ * and updates the game state 
+ */
 public class GameController implements InputEventListener {
 
     private Board board = new SimpleBoard(25, 10);
 
     private final GuiController viewGuiController;
 
+    /**
+     * Constructor for the GameController class.
+     */
     public GameController(GuiController c) {
         viewGuiController = c;
         board.createNewBrick();
@@ -21,6 +29,9 @@ public class GameController implements InputEventListener {
         viewGuiController.bindLevel(board.getLevel().levelProperty());
     }
 
+    /**
+     * when the user clicks the "Start" button
+     */
     @Override
     public DownData onDownEvent(MoveEvent event) {
         boolean canMove = board.moveBrickDown();
@@ -46,25 +57,36 @@ public class GameController implements InputEventListener {
         return new DownData(clearRow, board.getViewData());
     }
 
+    /**
+     * when the user clicks the "Left" button
+     */
     @Override
     public ViewData onLeftEvent(MoveEvent event) {
         board.moveBrickLeft();
         return board.getViewData();
     }
 
+    /**
+     * when the user clicks the "Right" button
+     */
     @Override
     public ViewData onRightEvent(MoveEvent event) {
         board.moveBrickRight();
         return board.getViewData();
     }
 
+    /**
+     * when the user clicks the "Rotate" button
+     */
     @Override
     public ViewData onRotateEvent(MoveEvent event) {
         board.rotateLeftBrick();
         return board.getViewData();
     }
 
-
+    /**
+     * when the user clicks the "New Game" button
+     */
     @Override
     public void createNewGame() {
         board.newGame();

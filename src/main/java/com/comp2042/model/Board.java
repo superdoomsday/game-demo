@@ -5,6 +5,9 @@ import com.comp2042.model.Level;
 import com.comp2042.model.Score;
 import com.comp2042.model.ViewData;
 
+/**
+ * This interface defines the methods
+ */
 public interface Board {
 
     boolean moveBrickDown();

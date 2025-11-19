@@ -11,8 +11,14 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * the main class of the game. 
+ */
 public class Main extends Application {
 
+    /**
+     * the start method of the game
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -29,7 +35,9 @@ public class Main extends Application {
         new GameController(c);
     }
 
-
+    /**
+     * the main method of the game
+     */
     public static void main(String[] args) {
         launch(args);
     }

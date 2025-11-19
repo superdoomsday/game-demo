@@ -3,6 +3,9 @@ package com.comp2042.model;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
+/**
+ * show the score of the game.
+ */
 public final class Score {
 
     private final IntegerProperty score = new SimpleIntegerProperty(0);

@@ -3,7 +3,9 @@ package com.comp2042.view;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
-
+/**
+ * creates a panel that displays "GAME OVER"
+ */
 public class GameOverPanel extends BorderPane {
 
     public GameOverPanel() {
