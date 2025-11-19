@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * the main class of the game. 
+ */
 public class Main extends Application {
 
     @Override

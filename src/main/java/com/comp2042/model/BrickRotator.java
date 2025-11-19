@@ -2,6 +2,9 @@ package com.comp2042.model;
 
 import com.comp2042.logic.bricks.Brick;
 
+/**
+ * used to rotate the brick's shape.
+ */
 public class BrickRotator {
 
     private Brick brick;

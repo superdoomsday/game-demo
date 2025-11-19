@@ -1,5 +1,8 @@
 package com.comp2042.model;
 
+/**
+ * represents the data that is sent to the view.
+ */
 public final class ViewData {
 
     private final int[][] brickData;

@@ -6,6 +6,9 @@ import com.comp2042.logic.bricks.RandomBrickGenerator;
 
 import java.awt.*;
 
+/**
+ * a simple implementation of the Board interface
+ */
 public class SimpleBoard implements Board {
 
     private final int width;
